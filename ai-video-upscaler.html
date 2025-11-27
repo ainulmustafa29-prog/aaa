@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free AI Video Upscaler - Upscale video resolution (2x, 4x, HD, 4K) with AI.">
+    <!-- Favicon Links for Google Search and Browser Compatibility -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon.icon/favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.icon/favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.icon/apple-touch-icon.png">
+    <link rel="manifest" href="favicon.icon/site.webmanifest">
+    <title>AI Video Upscaler - Free Online Tool | AIVOROPRO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <div class="tool-container">
+        <div class="tool-header">
+            <h1>AI Video Upscaler</h1>
+            <p>Upscale video resolution (2x, 4x, HD, 4K) with AI technology.</p>
+        </div>
+        <div class="upload-area" id="uploadArea">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Drag and drop your video here</p>
+            <span>or click to browse</span>
+        </div>
+        <div class="file-display-container">
+            <div class="file-display-box">
+                <h3>Original Video</h3>
+                <div class="file-preview" id="originalPreview">
+                    <div class="file-preview-placeholder"><i class="fas fa-video"></i><p>Original video will appear here</p></div>
+                </div>
+            </div>
+            <div class="file-display-box">
+                <h3>Upscaled Video</h3>
+                <div class="file-preview" id="processedPreview">
+                    <div class="file-preview-placeholder"><i class="fas fa-video"></i><p>Upscaled video will appear here</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <label class="me-3">Upscale Quality:</label>
+            <select id="upscaleQuality" class="form-select d-inline-block" style="width: auto;">
+                <option value="2x">2x</option>
+                <option value="4x" selected>4x</option>
+                <option value="HD">HD</option>
+                <option value="4K">4K</option>
+            </select>
+            <button class="btn btn-primary ms-3" id="processBtn" disabled><i class="fas fa-magic"></i> Upscale Video</button>
+            <button class="btn btn-secondary ms-2" id="downloadBtn" disabled><i class="fas fa-download"></i> Download</button>
+        </div>
+
+        <!-- How to Use Section -->
+        <div class="mt-5">
+            <h2 class="mb-4 text-center">How to Use AI Video Upscaler in 3 Simple Steps</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-primary shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="mb-3" style="font-size: 3rem; color: var(--accent-color);">
+                                <i class="fas fa-upload"></i>
+                            </div>
+                            <h4 class="card-title">Step 1: Upload Your Video</h4>
+                            <p class="card-text">Click on the upload area or drag and drop your video file. Our AI video upscaler supports various video formats including MP4, MOV, AVI, WMV, MKV, and more. The video will appear in the preview area once uploaded.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-primary shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="mb-3" style="font-size: 3rem; color: var(--accent-color);">
+                                <i class="fas fa-expand-arrows-alt"></i>
+                            </div>
+                            <h4 class="card-title">Step 2: Choose Upscale Quality</h4>
+                            <p class="card-text">Select your desired upscale quality from the dropdown menu. Choose 2x to double resolution, 4x to quadruple, HD for high definition, or 4K for ultra-high definition. Then click the "Upscale Video" button to start processing.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-primary shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="mb-3" style="font-size: 3rem; color: var(--accent-color);">
+                                <i class="fas fa-download"></i>
+                            </div>
+                            <h4 class="card-title">Step 3: Download Upscaled Video</h4>
+                            <p class="card-text">Once processing is complete, preview your upscaled video in the output area. The AI enhances video resolution while maintaining quality. If satisfied, click the "Download" button to save your high-resolution video to your device.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Description Section -->
+        <div class="mt-5">
+            <h2 class="mb-4">About AI Video Upscaler</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <img src="Video Upscaler.jpeg" alt="AI Video Upscaler Tool" class="img-fluid rounded shadow" style="width: 100%; max-height: 400px; object-fit: cover;">
+                </div>
+                <div class="col-md-6">
+                    <p class="lead">Enhance your video resolution with our powerful AI Video Upscaler. This advanced tool uses cutting-edge artificial intelligence and machine learning algorithms to intelligently upscale video resolution from standard definition to high definition (HD) or even 4K ultra-high definition. The AI analyzes each frame, understands video content, and generates new pixels based on learned patterns to create stunning high-resolution videos without the blurriness typically associated with traditional upscaling methods.</p>
+                    <p>Our AI video upscaling technology processes videos frame by frame, applying sophisticated algorithms that enhance detail, improve sharpness, and reduce artifacts. Unlike simple resolution scaling that just stretches pixels, our AI understands motion, textures, and patterns to create natural-looking upscaled videos. The tool supports multiple upscale factors including 2x, 4x, HD, and 4K, allowing you to transform low-resolution videos into professional-quality high-resolution content. Whether you're upscaling old home videos, enhancing footage for professional projects, or preparing videos for modern displays, our AI video upscaler delivers exceptional results. The process is completely free, works entirely in your browser for privacy, and maintains video quality while dramatically increasing resolution.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="mt-5">
+            <h2 class="mb-4">Frequently Asked Questions</h2>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            What video formats are supported by the AI Video Upscaler?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Our AI Video Upscaler supports all major video formats including MP4, MOV, AVI, WMV, MKV, FLV, WEBM, and more. You can upload videos in any of these formats, and the tool will process them seamlessly. The output format typically matches the input format, ensuring compatibility with your devices and media players.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            What is the maximum video file size I can upscale?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            While there's no strict file size limit, we recommend videos under 500MB for optimal processing speed and browser performance. Larger video files may take longer to process and require more system memory. The processing time depends on video length, resolution, and your device's performance capabilities.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            Will the upscaled video maintain audio quality?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, our AI Video Upscaler preserves audio quality during the upscaling process. The tool only processes video resolution and visual elements, leaving audio tracks completely untouched. Your upscaled video will have the same audio quality and synchronization as the original video.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                            How long does video upscaling take?
+                        </button>
+                    </h2>
+                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Processing time varies significantly based on video length, resolution, and the selected upscale factor. Short videos (under 1 minute) typically process in 30 seconds to 2 minutes, while longer videos may take 5-15 minutes or more. The 4K upscale option takes longer than 2x or 4x, but all processing happens in your browser for privacy.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                            Will upscaling improve video quality or just increase resolution?
+                        </button>
+                    </h2>
+                    <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Our AI Video Upscaler does both - it increases resolution and enhances quality. The AI algorithm intelligently adds detail, improves sharpness, and reduces artifacts while upscaling. The result is not just a larger video, but a higher-quality video with better detail definition and visual clarity compared to simple resolution scaling.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer-placeholder"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+        let currentFile = null, processedVideoData = null;
+        
+        // Calculate target dimensions based on upscale option
+        function calculateTargetDimensions(originalWidth, originalHeight, upscaleOption) {
+            let targetWidth, targetHeight;
+            
+            switch(upscaleOption) {
+                case '2x':
+                    targetWidth = originalWidth * 2;
+                    targetHeight = originalHeight * 2;
+                    break;
+                case '4x':
+                    targetWidth = originalWidth * 4;
+                    targetHeight = originalHeight * 4;
+                    break;
+                case 'HD':
+                    // HD can be 720p (1280x720) or 1080p (1920x1080)
+                    // Choose based on aspect ratio - prefer 1080p if aspect ratio allows
+                    const aspectRatio = originalWidth / originalHeight;
+                    if (aspectRatio >= 16/9) {
+                        // Wider than 16:9, use 1920x1080
+                        targetHeight = 1080;
+                        targetWidth = Math.round(1080 * aspectRatio);
+                        // If too wide, use 1280x720 instead
+                        if (targetWidth > 1920) {
+                            targetWidth = 1920;
+                            targetHeight = Math.round(1920 / aspectRatio);
+                        }
+                    } else {
+                        // Taller than 16:9, use 1280x720
+                        targetWidth = 1280;
+                        targetHeight = Math.round(1280 / aspectRatio);
+                        // If too tall, use 1920x1080 instead
+                        if (targetHeight > 1080) {
+                            targetHeight = 1080;
+                            targetWidth = Math.round(1080 * aspectRatio);
+                        }
+                    }
+                    break;
+                case '4K':
+                    // 4K is 3840x2160
+                    targetHeight = 2160;
+                    targetWidth = Math.round(2160 * (originalWidth / originalHeight));
+                    // Ensure width doesn't exceed 3840
+                    if (targetWidth > 3840) {
+                        targetWidth = 3840;
+                        targetHeight = Math.round(3840 / (originalWidth / originalHeight));
+                    }
+                    break;
+                default:
+                    targetWidth = originalWidth * 2;
+                    targetHeight = originalHeight * 2;
+            }
+            
+            // Ensure dimensions are even numbers (required for video encoding)
+            targetWidth = Math.round(targetWidth / 2) * 2;
+            targetHeight = Math.round(targetHeight / 2) * 2;
+            
+            return { width: targetWidth, height: targetHeight };
+        }
+        
+        // Upscale video using canvas and MediaRecorder
+        async function upscaleVideo(file, upscaleOption) {
+            return new Promise((resolve, reject) => {
+                const video = document.createElement('video');
+                video.preload = 'auto';
+                video.muted = true; // Mute for processing
+                video.playsInline = true;
+                video.crossOrigin = 'anonymous';
+                
+                video.onloadedmetadata = function() {
+                    const originalWidth = video.videoWidth;
+                    const originalHeight = video.videoHeight;
+                    
+                    if (originalWidth === 0 || originalHeight === 0) {
+                        reject(new Error('Could not read video dimensions'));
+                        return;
+                    }
+                    
+                    const targetDims = calculateTargetDimensions(originalWidth, originalHeight, upscaleOption);
+                    const targetWidth = targetDims.width;
+                    const targetHeight = targetDims.height;
+                    
+                    console.log(`Upscaling from ${originalWidth}x${originalHeight} to ${targetWidth}x${targetHeight}`);
+                    
+                    // Create canvas for processing
+                    const canvas = document.createElement('canvas');
+                    canvas.width = targetWidth;
+                    canvas.height = targetHeight;
+                    const ctx = canvas.getContext('2d');
+                    
+                    // Use image smoothing for better quality
+                    ctx.imageSmoothingEnabled = true;
+                    ctx.imageSmoothingQuality = 'high';
+                    
+                    // Try to get video frame rate, default to 30
+                    let frameRate = 30;
+                    try {
+                        // Try to get frame rate from video metadata
+                        const videoDuration = video.duration;
+                        // Estimate frame rate (this is approximate)
+                        frameRate = Math.round(30); // Default to 30 fps
+                    } catch (e) {
+                        frameRate = 30;
+                    }
+                    
+                    // Set up MediaRecorder with fallback options
+                    let mimeType = 'video/webm;codecs=vp9';
+                    if (!MediaRecorder.isTypeSupported(mimeType)) {
+                        mimeType = 'video/webm;codecs=vp8';
+                        if (!MediaRecorder.isTypeSupported(mimeType)) {
+                            mimeType = 'video/webm';
+                        }
+                    }
+                    
+                    const stream = canvas.captureStream(frameRate);
+                    const mediaRecorder = new MediaRecorder(stream, {
+                        mimeType: mimeType,
+                        videoBitsPerSecond: 8000000 // 8 Mbps for good quality
+                    });
+                    
+                    const chunks = [];
+                    mediaRecorder.ondataavailable = function(e) {
+                        if (e.data && e.data.size > 0) {
+                            chunks.push(e.data);
+                        }
+                    };
+                    
+                    mediaRecorder.onstop = function() {
+                        const blob = new Blob(chunks, { type: mimeType });
+                        const url = URL.createObjectURL(blob);
+                        resolve(url);
+                    };
+                    
+                    mediaRecorder.onerror = function(e) {
+                        reject(new Error('MediaRecorder error'));
+                    };
+                    
+                    // Start recording
+                    mediaRecorder.start(100); // Collect data every 100ms
+                    
+                    // Process video frames frame by frame
+                    let processing = false;
+                    
+                    const processNextFrame = function() {
+                        if (video.ended || video.currentTime >= video.duration) {
+                            mediaRecorder.stop();
+                            URL.revokeObjectURL(video.src);
+                            return;
+                        }
+                        
+                        // Draw current frame to canvas with upscaling
+                        ctx.drawImage(video, 0, 0, targetWidth, targetHeight);
+                        
+                        // Move to next frame
+                        const currentTime = video.currentTime;
+                        const nextTime = currentTime + (1 / frameRate);
+                        
+                        if (nextTime < video.duration) {
+                            video.currentTime = nextTime;
+                        } else {
+                            // Last frame
+                            video.currentTime = video.duration - 0.1;
+                            setTimeout(() => {
+                                mediaRecorder.stop();
+                                URL.revokeObjectURL(video.src);
+                            }, 100);
+                        }
+                    };
+                    
+                    video.onseeked = function() {
+                        if (!processing) return;
+                        processNextFrame();
+                    };
+                    
+                    video.onended = function() {
+                        if (mediaRecorder.state !== 'inactive') {
+                            mediaRecorder.stop();
+                        }
+                        URL.revokeObjectURL(video.src);
+                    };
+                    
+                    video.onerror = function(e) {
+                        processing = false;
+                        reject(new Error('Video playback error'));
+                        if (mediaRecorder.state !== 'inactive') {
+                            mediaRecorder.stop();
+                        }
+                        URL.revokeObjectURL(video.src);
+                    };
+                    
+                    // Start video playback and processing
+                    processing = true;
+                    video.currentTime = 0;
+                    video.play().then(() => {
+                        // Start processing first frame
+                        processNextFrame();
+                    }).catch(err => {
+                        processing = false;
+                        reject(new Error('Could not play video: ' + err.message));
+                    });
+                };
+                
+                video.onerror = function(e) {
+                    reject(new Error('Video load error'));
+                };
+                
+                const url = URL.createObjectURL(file);
+                video.src = url;
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeFileUpload('uploadArea', 'originalPreview', 'processedPreview', function(file) { currentFile = file; document.getElementById('processBtn').disabled = false; }, 'video');
+            
+            // Ensure upload area is clickable (backup handler - only if main.js handler didn't work)
+            setTimeout(function() {
+                const uploadArea = document.getElementById('uploadArea');
+                if (uploadArea) {
+                    uploadArea.style.cursor = 'pointer';
+                    uploadArea.setAttribute('role', 'button');
+                    uploadArea.setAttribute('tabindex', '0');
+                    uploadArea.addEventListener('click', function(e) {
+                        // Only fire if event wasn't already handled by main.js
+                        if (!e.defaultPrevented && e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A' && 
+                            e.target.tagName !== 'INPUT' && !e.target.closest('button') && !e.target.closest('a')) {
+                            const fileInput = uploadArea.querySelector('input[type="file"]');
+                            if (fileInput) {
+                                e.stopImmediatePropagation();
+                                try {
+                                    fileInput.click();
+                                } catch (err) {
+                                    setTimeout(function() { fileInput.click(); }, 10);
+                                }
+                            }
+                        }
+                    }, false); // Use bubble phase, fires after capture phase
+                }
+            }, 100);
+            
+            document.getElementById('processBtn').addEventListener('click', async function() {
+                if (currentFile) {
+                    const processBtn = document.getElementById('processBtn');
+                    const downloadBtn = document.getElementById('downloadBtn');
+                    const upscaleOption = document.getElementById('upscaleQuality').value;
+                    
+                    // Disable buttons during processing
+                    processBtn.disabled = true;
+                    processBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                    
+                    try {
+                        const upscaledVideoUrl = await upscaleVideo(currentFile, upscaleOption);
+                        processedVideoData = upscaledVideoUrl;
+                        document.getElementById('processedPreview').innerHTML = `<video src="${processedVideoData}" controls style="max-width: 100%; max-height: 100%;"></video>`;
+                        downloadBtn.disabled = false;
+                        
+                        // Re-enable process button
+                        processBtn.disabled = false;
+                        processBtn.innerHTML = '<i class="fas fa-magic"></i> Upscale Video';
+                    } catch (error) {
+                        console.error('Upscaling error:', error);
+                        alert('Error upscaling video: ' + error.message);
+                        processBtn.disabled = false;
+                        processBtn.innerHTML = '<i class="fas fa-magic"></i> Upscale Video';
+                    }
+                }
+            });
+            
+            document.getElementById('downloadBtn').addEventListener('click', async function() {
+                if (processedVideoData && currentFile) {
+                    try {
+                        // Fetch the blob from the object URL
+                        const response = await fetch(processedVideoData);
+                        const blob = await response.blob();
+                        
+                        // Create download link
+                        const link = document.createElement('a');
+                        link.href = URL.createObjectURL(blob);
+                        link.download = currentFile.name.replace(/\.[^/.]+$/, '') + '-upscaled.webm';
+                        link.click();
+                        
+                        // Clean up
+                        URL.revokeObjectURL(link.href);
+                    } catch (error) {
+                        console.error('Download error:', error);
+                        alert('Error downloading video: ' + error.message);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
